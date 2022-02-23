@@ -1,0 +1,17 @@
+.chat-list {
+	&__item {
+		transition: border-right 100ms linear, background-color 100ms linear;
+		&:hover {
+			background-color: var(--color-hover-bg);
+			cursor: pointer;
+		}
+		&_active, &_active:hover {
+			background-color: var(--color-active-bg);
+			border-right: 8px solid var(--color-accent);
+			// border-color: var(--color-accent) !important;
+		}
+	}
+	&__item + &__item {
+		border-top: var(--border);
+	}
+}

@@ -1,0 +1,72 @@
+@use 'variables';
+@use 'params';
+@use 'scrollbar';
+
+@import url('reset.css');
+@import url('icons/wf.css');
+@import url('fonts/roboto.css');
+
+body {
+	margin: 0;
+	overflow: hidden;
+	font-size: 14px;
+	color: var(--color-text);
+	background-color: var(--color-page-bg);
+	font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Hack, 'DejaVu Sans Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.theme-bg {
+	position: relative;
+	&::after {
+		content: '';
+		background-image: url('./assets/bg.png');
+		background-position: center;
+		background-repeat: no-repeat;
+		opacity: 0.1;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+	}
+}
+
+.noevent {
+	pointer-events: none;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+.fullevent {
+	pointer-events: all;
+}
+
+.fullview {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.icon-button {
+	font-size: 1.2em;
+	height: 1em;
+	cursor: pointer;
+	&_danger:hover {
+		color: var(--color-danger);
+	}
+	&_info:hover {
+		color: var(--color-info);
+	}
+	transition: color 100ms;
+}

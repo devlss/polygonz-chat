@@ -1,0 +1,32 @@
+@use "variables" as *;
+
+:root {
+	--color-text: #{$color-text-9};
+	--color-text-dim: #{$color-text-5};
+	--color-text-placeholder: #{$color-text-4};
+	--color-text-lite: #{$color-text-0};
+
+	--color-page-bg: #{$color-bg-9};
+	--color-items-bg: #{$color-bg-2};
+	--color-header-bg: #{$color-bg-3};
+	--color-active-bg: #{$color-bg-3};
+	--color-hover-bg: #{$color-bg-3};
+	--color-input-bg: #{$color-bg-0};
+	--color-button-bg: #{$color-bg-0};
+	--color-main-bg: #{$color-bg-0};
+
+	--color-message-from-bg: #{$color-bg-2};
+	--color-message-to-bg: #{$color-accent-4};
+	--color-message-to: #{$color-text-0};
+
+	--color-scrollbar: #{$color-text-4};
+	--color-scrollbar-bg: #{$color-bg-4};
+
+	--color-accent: #{$color-accent-4};
+	--color-info: CadetBlue;
+	--color-positive: SeaGreen;
+	--color-warning: Chocolate;
+	--color-danger: FireBrick;
+	--border-radius: 8px;
+	--border: 1px solid #{$color-text-4};
+}

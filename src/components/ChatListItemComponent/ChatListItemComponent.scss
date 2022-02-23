@@ -1,0 +1,41 @@
+.chat-list-item {
+	display: grid;
+	grid-template: 1em 3em/4em minmax(0, 1fr);
+	grid-template-areas: 'logo title' 'logo message';
+	gap: 0.2em 1em;
+	padding: 0.5em 1em;
+	background-color: var(--color-items-bg);
+	&__logo {
+		grid-area: logo;
+		padding: 2px 0;
+	}
+	&__title {
+		grid-area: title;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		&-text {
+			font-size: 1.2em;
+			font-weight: bold;
+		}
+	}
+	&__message {
+		grid-area: message;
+		color: var(--color-text-dim);
+	}
+	&__count {
+		display: inline-block;
+		line-height: 1em;
+		&-text {
+			display: inline-block;
+			min-width: 1em;
+			line-height: 1em;
+			padding: 2px;
+			border-radius: 1em;
+			font-size: 0.8em;
+			text-align: center;
+			color: var(--color-text-lite);
+			background-color: var(--color-danger);
+		}
+	}
+}

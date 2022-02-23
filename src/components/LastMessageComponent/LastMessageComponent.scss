@@ -1,0 +1,21 @@
+.last-message {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	line-height: 1em;
+	&__sender {
+		font-weight: bold;
+		&:after {
+			content: ':\a0';
+		}
+	}
+	&__time {
+		font-size: 0.8em;
+	}
+	&__text {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+}

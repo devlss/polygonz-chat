@@ -1,0 +1,83 @@
+.wrappr {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	background-color: var(--color-page-bg);
+}
+
+.container {
+	flex: 1;
+	max-width: 1366px;
+	margin: 1em 0;
+}
+
+@media screen and (max-width: 1365px) {
+	.container {
+		flex: 1;
+		width: 100%;
+		margin: 0;
+	}
+}
+
+.chat {
+	display: grid;
+	grid-template: 5em 1fr auto/22em 1fr;
+	grid-template-areas: 'user info' 'list messages' 'list send';
+	overflow: hidden;
+	&__user {
+		grid-area: user;
+		border-right: var(--border);
+		border-bottom: var(--border);
+		background-color: var(--color-header-bg);
+		z-index: 10;
+	}
+	&__list {
+		grid-area: list;
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+		border-right: var(--border);
+		background-color: var(--color-items-bg);
+		z-index: 10;
+		&-header {
+			background-color: var(--color-item-bg);
+			padding: 0.5em 1em;
+		}
+		&-container {
+			overflow: auto;
+		}
+	}
+	&__info {
+		grid-area: info;
+		border-bottom: var(--border);
+		background-color: var(--color-header-bg);
+		z-index: 10;
+	}
+	&__messages {
+		grid-area: messages;
+		min-height: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		z-index: 5;
+		& > * {
+			min-height: 100%;
+		}
+	}
+	&__send {
+		grid-area: send;
+		padding: 0.5em 1em;
+		overflow: hidden;
+		border-top: var(--border);
+		background-color: var(--color-items-bg);
+		z-index: 10;
+	}
+	&__void {
+		grid-row: info / send;
+		padding: 1em 5em;
+		color: var(--color-text-lite);
+	}
+	&.theme-bg::after {
+		left: 22em;
+	}
+}

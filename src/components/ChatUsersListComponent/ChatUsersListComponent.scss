@@ -1,0 +1,5 @@
+.chat-users-list {
+	&__item + span::before {
+		content: ',\a0';
+	}
+}

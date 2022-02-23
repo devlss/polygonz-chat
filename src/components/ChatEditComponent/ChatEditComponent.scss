@@ -1,0 +1,38 @@
+.chat-edit {
+	padding: 1em;
+	width: 360px;
+	&__section {
+		overflow: hidden;
+		border-radius: var(--border-radius);
+		border:var(--border)
+	}
+	&__section + &__section {
+		margin-top: 1em;
+	}
+	&__button {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		padding: 1em 0;
+		cursor: pointer;
+		background-color: var(--color-button-bg);
+		&:hover {
+			background-color: var(--color-hover-bg);
+		}
+		&_danger {
+			color: var(--color-danger);
+		}
+		&-icon {
+			font-size: 2em;
+			width: 2em;
+		}
+		&-text {
+			font-size: 1.2em;
+			font-weight: bold;
+			padding-bottom: 4px;
+		}
+	}
+	&__button + &__button {
+		border-top: var(--border);
+	}
+}

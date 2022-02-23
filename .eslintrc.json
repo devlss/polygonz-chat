@@ -4,5 +4,6 @@
 		"es6": true,
 		"browser": true,
 		"node": true
-	}
+	},
+	"extends": ["react-app", "react-app/jest"]
 }

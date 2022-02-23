@@ -1,0 +1,59 @@
+$hook-height: 8px;
+$hook-width: 16px;
+
+.message {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 0.2em;
+	padding: 0.2em 1em 0;
+	border-radius: var(--border-radius);
+	min-width: 360px;
+	max-width: 440px;
+	&_connect {
+		text-align: center;
+		color: var(--color-text-dim);
+		background-color: var(--color-message-from-bg);
+	}
+	&_to {
+		color: var(--color-message-to);
+		background-color: var(--color-message-to-bg);
+		&::after {
+			content: '';
+			position: absolute;
+			right: -$hook-width + 1;
+			bottom: var(--border-radius);
+			display: block;
+			border-top: $hook-height solid transparent;
+			border-left: $hook-width solid var(--color-message-to-bg);
+		}
+	}
+	&_from {
+		background-color: var(--color-message-from-bg);
+		&::before {
+			content: '';
+			position: absolute;
+			top: var(--border-radius);
+			left: -$hook-width + 1;
+			display: block;
+			border-right: $hook-width solid var(--color-message-from-bg);
+			border-bottom: $hook-height solid transparent;
+		}
+	}
+	&__header {
+		overflow: hidden;
+		white-space: nowrap;
+		color: var(--color-text-dim);
+		&-login {
+			color: var(--color-accent);
+		}
+	}
+	&__footer {
+		align-self: flex-end;
+		opacity: 0.6;
+		font-size: 0.8em;
+	}
+	&__content {
+		flex-grow: 1;
+	}
+}
