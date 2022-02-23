@@ -1,10 +1,10 @@
 import {FC, useEffect} from 'react';
+import {LogoComponent} from '../LogoComponent';
+import {useAppDispatch, useAppSelector} from '../../store/hooks';
+import {getUserRequest, logoutRequest} from '../../store/User/actions';
 import type {UserInfoComponentProps} from './UserInfoComponent.types';
 
 import './UserInfoComponent.scss';
-import {LogoComponent} from '../LogoComponent';
-import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {getUserRequest} from '../../store/User/actions';
 
 export const UserInfoComponent: FC<UserInfoComponentProps> = () => {
 	const dispatch = useAppDispatch();
@@ -26,7 +26,7 @@ export const UserInfoComponent: FC<UserInfoComponentProps> = () => {
 						{/* {user.display_name || `${user.first_name} ${user.second_name}`} */}
 					</div>
 					{/* <div className="user-info__other">{`${user.phone} ${user.email}`}</div> */}
-					<div className="user-info__buttons">
+					<div onClick={() => {dispatch(logoutRequest())}} className="user-info__buttons">
 						<button className="icon-button icon-button_danger">
 							<i className="lnr lnr-exit"></i>
 						</button>

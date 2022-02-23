@@ -13,7 +13,7 @@ export const ModalLayout: FC<ModalLayoutProps> = ({children, title, onClick}) =>
 		return () => {
 			modalRoot?.removeChild(el);
 		};
-	}, []);
+	}, [modalRoot]);
 
 	return ReactDOM.createPortal(
 		<>

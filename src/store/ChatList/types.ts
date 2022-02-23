@@ -14,6 +14,7 @@ export const enum CHAT_LIST_ACTION_TYPES {
 	ADD_ALL = 'pchat/chats/add-all',
 	ADD = 'pchat/chats/add',
 	REMOVE = 'pchat/chats/remove',
+	REMOVE_ALL = 'pchat/chats/remove-all',
 	UPDATE_LM = 'pchat/chats/update-lm',
 	SET_ACTIVE = 'pchat/chats/set-active',
 	R_GET_ALL = 'pchat/chats/r-get-all',
@@ -34,6 +35,10 @@ export interface AddChatAction {
 export interface RemoveChatAction {
 	type: CHAT_LIST_ACTION_TYPES.REMOVE;
 	payload: IApiDeleteChatRequest;
+}
+
+export interface RemoveAllChatsAction {
+	type: CHAT_LIST_ACTION_TYPES.REMOVE_ALL;
 }
 
 export interface UpdateChatLastMessageAction {
@@ -64,5 +69,5 @@ export interface DeleteChatRequest {
 	payload: IApiDeleteChatRequest;
 }
 
-export type ChatListActions = AddAllChatsAction | AddChatAction | RemoveChatAction | UpdateChatLastMessageAction | SetActiveChatAction;
+export type ChatListActions = AddAllChatsAction | AddChatAction | RemoveChatAction | RemoveAllChatsAction | UpdateChatLastMessageAction | SetActiveChatAction;
 export type ChatListRequests = GetAllChatsRequest | CreateChatRequest | DeleteChatRequest;

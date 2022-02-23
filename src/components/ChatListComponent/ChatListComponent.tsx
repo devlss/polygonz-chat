@@ -16,7 +16,7 @@ export const ChatListComponent: FC<ChatListComponentProps> = ({className}) => {
 	));
 	useEffect(() => {
 		dispatch(getAllChatsRequest());
-	}, []);
+	}, [dispatch]);
 	useEffect(() => {
 		if (activeChat) {
 			dispatch(connectRequest(activeChat));
@@ -26,7 +26,7 @@ export const ChatListComponent: FC<ChatListComponentProps> = ({className}) => {
 				dispatch(disconnectRequest(activeChat));
 			}
 		};
-	}, [activeChat]);
+	}, [activeChat, dispatch]);
 	return (
 		<div
 			className={`chat-list ${className || ''}`}

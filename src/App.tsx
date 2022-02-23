@@ -1,13 +1,16 @@
 import React from 'react';
 import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
 import {store} from './store';
-import {Main} from './pages/Main';
+import {AppRouter} from './router/AppRouter';
 
 function App(): JSX.Element {
 	return (
 		<React.StrictMode>
 			<Provider store={store}>
-				<Main />
+				<BrowserRouter>
+					<AppRouter />
+				</BrowserRouter>
 			</Provider>
 		</React.StrictMode>
 	);

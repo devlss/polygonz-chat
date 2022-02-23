@@ -1,5 +1,3 @@
-import {SyntheticEvent} from "react";
-
 export interface InputComponentProps {
 	placeholder?: string;
 	onSubmit?: (value?: string | null) => void

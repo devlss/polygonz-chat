@@ -7,7 +7,8 @@ import type {
 	SetActiveChatAction,
 	DeleteChatRequest,
 	CreateChatRequest,
-	RemoveChatAction
+	RemoveChatAction,
+	RemoveAllChatsAction
 } from './types';
 import type {IApiChat, IApiChatLastMessage, IApiCreateChatRequest, IApiDeleteChatRequest} from '../../api/types';
 
@@ -29,6 +30,12 @@ export function removeChatAction(payload: IApiDeleteChatRequest): RemoveChatActi
 	return {
 		type: CHAT_LIST_ACTION_TYPES.REMOVE,
 		payload
+	};
+}
+
+export function removeAllChatsAction(): RemoveAllChatsAction {
+	return {
+		type: CHAT_LIST_ACTION_TYPES.REMOVE_ALL
 	};
 }
 

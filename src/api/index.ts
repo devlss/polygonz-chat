@@ -1,6 +1,47 @@
 import {exist} from '../helpers';
 import {ax} from './init';
-import {IApiChat, IApiChatsMessagesTokenResponse, IApiCreateChatRequest, IApiDeleteChatRequest, IApiUnreadCountResponse, IApiUpdateChatUsersRequest, IApiUser, Id} from './types';
+import type {
+	IApiChat,
+	IApiChatsMessagesTokenResponse,
+	IApiCreateChatRequest,
+	IApiDeleteChatRequest,
+	IApiSignInRequest,
+	IApiSignUpRequest,
+	IApiSignUpResponce,
+	IApiUnreadCountResponse,
+	IApiUpdateChatUsersRequest,
+	IApiUser,
+	Id
+} from './types';
+
+/**
+ * Запрос регистрации
+ * @param data  Информация о пользователе
+ */
+export async function signUp(data: IApiSignUpRequest): Promise<boolean> {
+	const response = await ax.post<IApiSignUpResponce>('/auth/signup', data, {responseType: 'text'});
+
+	return Boolean(response.data.id) || Promise.reject(response);
+}
+
+/**
+ * Запрос авторизации
+ * @param data  Логин и пароль
+ */
+export async function signIn(data: IApiSignInRequest): Promise<boolean> {
+	const response = await ax.post<string>('/auth/signin', data, {responseType: 'text'});
+
+	return response.data === 'OK' || Promise.reject(response);
+}
+
+/**
+ * Запрос выхода из системы
+ */
+export async function signOut(): Promise<boolean> {
+	const response = await ax.post<string>('/auth/logout', null, {responseType: 'text'});
+
+	return response.data === 'OK' || Promise.reject(response);
+}
 
 /**
  * Запрос информации о пользователе
@@ -51,15 +92,15 @@ export async function getChatUsers(id: number): Promise<IApiUser[]> {
 }
 
 export async function addChatUser(data: IApiUpdateChatUsersRequest): Promise<boolean> {
-	const response = await ax.put('/chats/users', data, {responseType: 'text'});
+	const response = await ax.put<string>('/chats/users', data, {responseType: 'text'});
 
-	return response.data === 'OK';
+	return response.data === 'OK' || Promise.reject(response);
 }
 
 export async function deleteChatUser(data: IApiUpdateChatUsersRequest): Promise<boolean> {
-	const response = await ax.delete('/chats/users', {responseType: 'text', data});
+	const response = await ax.delete<string>('/chats/users', {responseType: 'text', data});
 
-	return response.data === 'OK';
+	return response.data === 'OK' || Promise.reject(response);
 }
 
 export async function getChatToken(chatId: number): Promise<IApiChatsMessagesTokenResponse> {

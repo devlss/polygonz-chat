@@ -20,10 +20,6 @@ export const chatListMiddleware: AppMiddleware =
 					})
 				);
 				return;
-				// const req = await new Promise((resolve, reject) => {
-				// 	setTimeout(() => resolve('111'), 1000);
-				// });
-				// console.log('send request :>> ', req, action.payload);
 			}
 			case CHAT_LIST_ACTION_TYPES.R_DELETE: {
 				const isOk = await deleteChat(action.payload);

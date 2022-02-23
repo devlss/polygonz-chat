@@ -24,7 +24,6 @@ export const messagesReducer = (state = initialState, action: MessagesActions): 
 			if (newState.map[action.payload.chatId]) {
 				const newList = [...newState.map[action.payload.chatId], action.payload.message];
 				newState.map[action.payload.chatId] = newList;
-				console.log('add :>> ', newState.map);
 				return newState;
 			} else {
 				newState.map[action.payload.chatId] = [action.payload.message];

@@ -1,4 +1,3 @@
-import {IApiChat} from '../../api/types';
 import {ChatListActions, ChatListRequests, CHAT_LIST_ACTION_TYPES, IChatListState} from './types';
 
 const initialState: IChatListState = {
@@ -18,6 +17,9 @@ export const chatListReducer = (state = initialState, action: ChatListActions | 
 			const filteredList = state.list.filter((chat) => chat.id !== action.payload.chatId);
 			const active = state.active === action.payload.chatId ? undefined : state.active;
 			return {list: filteredList, active: active};
+		}
+		case CHAT_LIST_ACTION_TYPES.REMOVE_ALL: {
+			return {list: [], active: undefined};
 		}
 		case CHAT_LIST_ACTION_TYPES.UPDATE_LM: {
 			let targetChatIndex = state.list.findIndex((chat) => chat.id === action.payload.chatId);

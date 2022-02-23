@@ -9,7 +9,7 @@ export interface IMessagesState {
 export const enum MESSAGES_ACTION_TYPES {
 	ADD_OLD = 'pchat/messages/add-old',
 	ADD = 'pchat/messages/add',
-	SET_TOKEN = 'pchat/chats/set-token',
+	SET_TOKEN = 'pchat/messages/set-token',
 	R_GET_TOKEN = 'pchat/messages/r-get-token',
 	R_CONNECT = 'pchat/messages/r-connect',
 	R_DISCONNECT = 'pchat/messages/r-disconnect',

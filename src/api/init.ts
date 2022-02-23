@@ -17,7 +17,7 @@ ax.interceptors.response.use(responseHandler, responseErrorHandler);
  */
 function requestHandler(request: AxiosRequestConfig): AxiosRequestConfig {
 	// eslint-disable-next-line no-console
-	// console.log('[API req]', request);
+	// console.debug('[API req]', request);
 
 	return request;
 }
@@ -29,7 +29,7 @@ function requestHandler(request: AxiosRequestConfig): AxiosRequestConfig {
  */
 function responseHandler<T>(response: AxiosResponse<T>): AxiosResponse<T> {
 	// eslint-disable-next-line no-console
-	// console.log('[API resp]', response);
+	// console.debug('[API resp]', response);
 
 	return response;
 }

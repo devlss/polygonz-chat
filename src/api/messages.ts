@@ -38,7 +38,7 @@ export function createConnection(
 	const logPreffix = `[wss - ${chatId}]`;
 	const connection = new WebSocket(`${wsUrl}/${userId}/${chatId}/${token}`);
 	connection.addEventListener('open', () => {
-		console.log(`${logPreffix} Соединение установлено`);
+		console.debug(`${logPreffix} Соединение установлено`);
 		connections[chatId] = connection;
 		send(chatId, {
 			type: MESSAGE_TYPE_RQ.GET_OLD,
@@ -49,19 +49,19 @@ export function createConnection(
 
 	connection.addEventListener('close', (event) => {
 		if (event.wasClean) {
-			console.log(`${logPreffix} Соединение закрыто чисто`);
+			console.debug(`${logPreffix} Соединение закрыто чисто`);
 		} else {
-			console.log(`${logPreffix} Обрыв соединения`);
+			console.debug(`${logPreffix} Обрыв соединения`);
 		}
 		clearInterval(keepAliveTimers[chatId]);
 		handlers.onClose(chatId);
 
-		console.log(`${logPreffix} Код: ${event.code} | Причина: ${event.reason}`);
+		console.debug(`${logPreffix} Код: ${event.code} | Причина: ${event.reason}`);
 	});
 
 	connection.addEventListener('message', (event) => {
 		const data = JSON.parse(event.data);
-		console.log(`${logPreffix} Получены данные`, data);
+		console.debug(`${logPreffix} Получены данные`, data);
 		const message = messageHandler(data, chatId);
 		if (message) {
 			handlers.onMessage(chatId, message);
@@ -69,7 +69,7 @@ export function createConnection(
 	});
 
 	connection.addEventListener('error', (event) => {
-		console.log(`${logPreffix} Ошибка`, event);
+		console.error(`${logPreffix} Ошибка`, event);
 	});
 }
 
@@ -83,7 +83,7 @@ export function send<T extends IMApiRequest>(chatId: number, message: T) {
 	if (connection && connection.readyState === connection.OPEN) {
 		connection.send(JSON.stringify(message));
 	} else {
-		console.error(`[wss - ${chatId} - send] Нет соединения`);
+		console.warn(`[wss - ${chatId} - send] Нет соединения`);
 	}
 }
 
@@ -92,7 +92,7 @@ export function send<T extends IMApiRequest>(chatId: number, message: T) {
  * Если вызывается без указания ID, закрываются все соединения
  * @param chatId - ID чата(подключения)
  */
-export function disconnect(chatId: number) {
+export function disconnect(chatId?: number) {
 	if (chatId) {
 		closeFn(chatId);
 	} else {
@@ -109,7 +109,7 @@ const closeFn = (chatId: number) => {
 		}
 		delete connections[chatId];
 	} else {
-		console.error(`[wss - ${chatId} - disconnect] Нет соединения`);
+		console.warn(`[wss - ${chatId} - disconnect] Нет соединения`);
 	}
 };
 
@@ -126,7 +126,7 @@ const messageHandler = (data: unknown, chatId: number): MApiResponses | undefine
 	} else if (data !== null && typeof data === 'object') {
 		switch ((data as IMApiResponse).type) {
 			case MESSAGE_TYPE_RS.PONG: {
-				console.log(`[wss - ${chatId} - message] pong`);
+				console.debug(`[wss - ${chatId} - message] pong`);
 				return;
 			}
 			case MESSAGE_TYPE_RS.MESSAGE: {
@@ -136,7 +136,7 @@ const messageHandler = (data: unknown, chatId: number): MApiResponses | undefine
 				return data as IMapiUserConnectResponse;
 			}
 			default: {
-				console.log(`[wss - ${chatId} - message] unknown`);
+				console.debug(`[wss - ${chatId} - message] unknown`);
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-import {FC, memo, useMemo} from 'react';
+import {FC, useMemo} from 'react';
 import type {LogoComponentProps} from './LogoComponent.types';
 
 import './LogoComponent.scss';
