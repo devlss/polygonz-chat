@@ -35,6 +35,7 @@ export const ChatUsersEditComponent: FC<ChatUsersEditComponentProps> = ({chatId}
 	return (
 		<div className="chat-users-edit">
 			<div className="chat-users-edit__add-user">
+				<h3>Добавить пользователя</h3>
 				<InputComponent placeholder="Начните вводить логин" onInput={debounce(handleSearch, 500)} />
 			</div>
 			{filteredSearch.length ? (

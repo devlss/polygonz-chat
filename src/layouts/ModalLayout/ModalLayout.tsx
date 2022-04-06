@@ -32,5 +32,4 @@ export const ModalLayout: FC<ModalLayoutProps> = ({children, title, onClick}) =>
 		</>,
 		el
 	);
-	// return <div>{children}</div>
 };
