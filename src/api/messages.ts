@@ -76,7 +76,7 @@ export function createConnection(
 /**
  * Отправка сообщение на сервер
  * @param chatId - ID чата(подключения)
- * @param content - Сообщение
+ * @param message - Сообщение
  */
 export function send<T extends IMApiRequest>(chatId: number, message: T) {
 	const connection = connections[chatId];
@@ -121,7 +121,7 @@ const closeFn = (chatId: number) => {
 const messageHandler = (data: unknown, chatId: number): MApiResponses | undefined => {
 	if (Array.isArray(data) && data.length) {
 		return data.reverse().map<IMApiOldMessageResponse>((oldMessage) => {
-			return {...oldMessage, file: undefined};
+			return {...oldMessage, type: MESSAGE_TYPE_RS.MESSAGE, file: undefined}; // HACK Внезапное изменение сервера
 		});
 	} else if (data !== null && typeof data === 'object') {
 		switch ((data as IMApiResponse).type) {
@@ -130,7 +130,8 @@ const messageHandler = (data: unknown, chatId: number): MApiResponses | undefine
 				return;
 			}
 			case MESSAGE_TYPE_RS.MESSAGE: {
-				return data as IMApiMessageResponse;
+				const message = data as IMApiMessageResponse;
+				return {...message, user_id: message.userId!}; // HACK Внезапное изменение сервера
 			}
 			case MESSAGE_TYPE_RS.USER_CONNECTED: {
 				return data as IMapiUserConnectResponse;

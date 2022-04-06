@@ -61,6 +61,7 @@ export interface IMApiMessageResponse extends IMApiResponse {
 	id: number;
 	content: string;
 	user_id: number;
+	userId?: number; // HACK Внезапное изменение сервера
 	time: string;
 }
 
