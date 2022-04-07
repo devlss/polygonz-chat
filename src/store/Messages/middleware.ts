@@ -1,11 +1,11 @@
 import {getChatToken} from '../../api';
 import {createConnection, disconnect, send} from '../../api/messages';
-import {addMessageAction, addOldMessagesAction, setTokenAction} from './actions';
+import {addMessageAction, addOldMessagesAction, messagesResetAction, setTokenAction} from './actions';
 import {updateChatLastMessageAction} from '../ChatList/actions';
 import {MApiResponsTypes, MESSAGE_TYPE_RS} from '../../api/messages.types';
-import {AppMiddleware} from '../types';
 import {MessagesRequests, MESSAGES_ACTION_TYPES} from './types';
-import {IApiUser} from '../../api/types';
+import type {AppMiddleware} from '../types';
+import type {IApiUser} from '../../api/types';
 
 export const messagesMiddleware: AppMiddleware = ({dispatch, getState}) => {
 	const updateLastMessage = (chatId: number, currentUser: IApiUser, message: MApiResponsTypes) => {
@@ -36,6 +36,7 @@ export const messagesMiddleware: AppMiddleware = ({dispatch, getState}) => {
 				}
 				return;
 			}
+			case MESSAGES_ACTION_TYPES.R_GET_OLD:
 			case MESSAGES_ACTION_TYPES.R_SEND: {
 				const activeChatId = getState().chats.active;
 				if (activeChatId && getState().messages.tokensMap[activeChatId]) {
@@ -58,7 +59,7 @@ export const messagesMiddleware: AppMiddleware = ({dispatch, getState}) => {
 					const currentUser = getState().user.info!;
 					createConnection(currentUser.id, action.payload, token, {
 						onClose: (chatId) => {
-							dispatch(setTokenAction(chatId, {token: ''}));
+							dispatch(messagesResetAction(chatId));
 						},
 						onMessage: (chatId, message) => {
 							if (Array.isArray(message)) {

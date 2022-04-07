@@ -5,7 +5,9 @@ import {
 	AddOldMessagesAction,
 	ConnectRequest,
 	DisconnectRequest,
+	GetOldMessagesRequest,
 	GetTokenRequest,
+	MessagesResetAction,
 	MESSAGES_ACTION_TYPES,
 	SendMessageRequest,
 	SetTokenAction
@@ -30,6 +32,17 @@ export function setTokenAction(chatId: number, token: IApiChatsMessagesTokenResp
 		type: MESSAGES_ACTION_TYPES.SET_TOKEN,
 		payload: {chatId, token}
 	};
+}
+
+export function messagesResetAction(chatId?: number): MessagesResetAction {
+	return chatId
+		? {
+				type: MESSAGES_ACTION_TYPES.RESET,
+				payload: {chatId}
+		  }
+		: {
+				type: MESSAGES_ACTION_TYPES.RESET
+		  };
 }
 
 export function getTokenRequest(payload: number): GetTokenRequest {
@@ -58,6 +71,16 @@ export function sendMessasgeRequest(content: string): SendMessageRequest {
 		type: MESSAGES_ACTION_TYPES.R_SEND,
 		payload: {
 			type: MESSAGE_TYPE_RQ.MESSAGE,
+			content
+		}
+	};
+}
+
+export function getOldMessasgesRequest(content: string): GetOldMessagesRequest {
+	return {
+		type: MESSAGES_ACTION_TYPES.R_GET_OLD,
+		payload: {
+			type: MESSAGE_TYPE_RQ.GET_OLD,
 			content
 		}
 	};
