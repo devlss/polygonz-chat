@@ -5,6 +5,7 @@
 	--color-text-dim: #{$color-text-5};
 	--color-text-placeholder: #{$color-text-4};
 	--color-text-lite: #{$color-text-0};
+	--color-border: #{$color-text-4};
 
 	--color-page-bg: #{$color-bg-9};
 	--color-items-bg: #{$color-bg-2};
@@ -18,6 +19,7 @@
 	--color-message-from-bg: #{$color-bg-2};
 	--color-message-to-bg: #{$color-accent-4};
 	--color-message-to: #{$color-text-0};
+	--color-void: #{$color-text-0};
 
 	--color-scrollbar: #{$color-text-4};
 	--color-scrollbar-bg: #{$color-bg-4};
@@ -29,4 +31,18 @@
 	--color-danger: FireBrick;
 	--border-radius: 8px;
 	--border: 1px solid #{$color-text-4};
+}
+
+body.dark {
+	--color-message-to-bg: #{$color-accent-2};
+	--color-message-to: #{$color-text-9};
+	--color-void: #{$color-text-9};
+}
+
+@media (prefers-color-scheme: dark) {
+	body.os {
+		--color-message-to-bg: #{$color-accent-2};
+		--color-message-to: #{$color-text-9};
+		--color-void: #{$color-text-9};
+	}
 }

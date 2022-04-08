@@ -10,6 +10,7 @@ import {MessageListComponent} from '../../components/MessageListComponent';
 import type {MainProps} from './Main.types';
 
 import './Main.scss';
+import {ThemeSwitchComponent} from '../../components/ThemeSwitchComponent';
 
 export const Main: FC<MainProps> = () => {
 	const dispatch = useAppDispatch();
@@ -34,6 +35,9 @@ export const Main: FC<MainProps> = () => {
 					<div className="chat__list-container">
 						<ChatListComponent />
 					</div>
+					<footer className="chat__list-footer">
+						<ThemeSwitchComponent />
+					</footer>
 				</section>
 
 				{chatId ? (
@@ -51,7 +55,7 @@ export const Main: FC<MainProps> = () => {
 				) : (
 					<div className="chat__void">
 						<h1>Информация</h1>
-						<span>Это незаконченная версия приложения содержащая ошибки, и сервер которого является публичным. </span>
+						<span>Это незаконченное демонстрационное приложение</span>
 						<em>Использовать только для ознакомления</em>
 
 						<h2>Ограничения</h2>
@@ -65,7 +69,6 @@ export const Main: FC<MainProps> = () => {
 							<li>Не реализовано удаление других пользователей чата (можно использовать старую версию чата)</li>
 							<li>Не реализованы всплывающие сообщения об ошиках</li>
 							<li>Не реализованы тробберы</li>
-							<li>Не реализовано переключение тем</li>
 						</ul>
 					</div>
 				)}

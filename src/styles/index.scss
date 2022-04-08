@@ -18,6 +18,16 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+body.dark main {
+	filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+	body.os main {
+		filter: invert(1);
+	}
+}
+
 code {
 	font-family: source-code-pro, Hack, 'DejaVu Sans Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
