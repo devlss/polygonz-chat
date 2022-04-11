@@ -35,9 +35,9 @@ export const Main: FC<MainProps> = () => {
 					<div className="chat__list-container">
 						<ChatListComponent />
 					</div>
-					<footer className="chat__list-footer">
-						<ThemeSwitchComponent />
-					</footer>
+				</section>
+				<section className="chat__theme-switch">
+					<ThemeSwitchComponent />
 				</section>
 
 				{chatId ? (
@@ -53,11 +53,9 @@ export const Main: FC<MainProps> = () => {
 						</section>
 					</>
 				) : (
-					<div className="chat__void">
+					<section className="chat__void">
 						<h1>Информация</h1>
-						<span>Это незаконченное демонстрационное приложение</span>
-						<em>Использовать только для ознакомления</em>
-
+						Это незаконченное демонстрационное приложение. <em>Использовать только для ознакомления</em>
 						<h2>Ограничения</h2>
 						<ul>
 							<li>Подключение создается только для 1 активного чата (вопрос сервера)</li>
@@ -70,7 +68,7 @@ export const Main: FC<MainProps> = () => {
 							<li>Не реализованы всплывающие сообщения об ошиках</li>
 							<li>Не реализованы тробберы</li>
 						</ul>
-					</div>
+					</section>
 				)}
 			</main>
 		</div>

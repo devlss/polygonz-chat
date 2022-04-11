@@ -1,66 +1,67 @@
 .theme-switch {
 	--padding: 0;
-    --button-size: 1.5em;
-    --button-size-outer: 1.5em;
-    position: relative;
-    display: flex;
-    padding: var(--padding);
-    border-radius: var(--button-size-outer);
-    border: none;
-    box-shadow: 0 0 0 2px var(--color-border);
-}
-
-.theme-switch:focus-within {
-    box-shadow: 0 0 0 2px var(--color-accent);
-}
-
-.theme-switch__legend {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.theme-switch__radio {
-    margin: 0;
-    appearance: none;
+	--button-size: 1.5em;
+	--button-size-outer: 1.5em;
+	position: relative;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: var(--button-size);
-    width: var(--button-size-outer);
-    height: var(--button-size-outer);
-	color: var(--color-text);
-    z-index: 2;
-    transition: filter 0.1s ease-in;
-}
+	width: fit-content;
+	padding: var(--padding);
+	border-radius: var(--button-size-outer);
+	border: none;
+	box-shadow: 0 0 0 2px var(--color-border);
 
-.theme-switch__radio:focus {
-    outline: none;
-}
+	&:focus-within {
+		box-shadow: 0 0 0 2px var(--color-accent);
+	}
 
-.theme-switch__radio:checked {
-    filter: invert(1);
-}
+	&__legend {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+	}
 
-.theme-switch__position {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: transparent;
-    background-image: url('assets/circle-solid.svg');
-    background-size: var(--button-size-outers);
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
-    transition: background-position 0.1s ease-in;
-}
+	&__radio {
+		margin: 0;
+		appearance: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: var(--button-size);
+		width: var(--button-size-outer);
+		height: var(--button-size-outer);
+		color: var(--color-text);
+		z-index: 2;
+		transition: filter 0.1s ease-in;
+	}
 
-.theme-switch__radio--light:checked ~ .theme-switch__position {
-    background-position-x: left;
-}
+	&__radio:focus {
+		outline: none;
+	}
 
-.theme-switch__radio--dark:checked ~ .theme-switch__position {
-    background-position-x: right;
+	&__radio:checked {
+		filter: invert(1);
+	}
+
+	&__position {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-color: transparent;
+		background-image: url('assets/circle-solid.svg');
+		background-size: var(--button-size-outers);
+		background-position: center;
+		background-repeat: no-repeat;
+		z-index: 1;
+		transition: background-position 0.1s ease-in;
+	}
+
+	&__radio--light:checked ~ &__position {
+		background-position-x: left;
+	}
+
+	&__radio--dark:checked ~ &__position {
+		background-position-x: right;
+	}
 }

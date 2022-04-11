@@ -23,7 +23,7 @@
 .chat {
 	display: grid;
 	grid-template: 5em 1fr auto/22em 1fr;
-	grid-template-areas: 'user info' 'list messages' 'list send';
+	grid-template-areas: 'user info' 'list messages' 'theme send';
 	overflow: hidden;
 	&__user {
 		grid-area: user;
@@ -42,16 +42,19 @@
 		z-index: 10;
 		&-header {
 			padding: 0.5em 1em;
-			background-color: var(--color-item-bg);
-		}
-		&-footer {
-			margin: auto;
-			padding: 0.5em 1em;
-			background-color: var(--color-item-bg);
+			background-color: var(--color-items-bg);
 		}
 		&-container {
 			flex-grow: 1;
 			overflow: auto;
+		}
+	}
+	&__theme-switch {
+		grid-area: theme;
+		padding: 0.5em 1em;
+		background-color: var(--color-items-bg);
+		& > * {
+			margin: auto;
 		}
 	}
 	&__info {
