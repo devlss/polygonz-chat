@@ -1,3 +1,5 @@
+@use '../../styles/variables' as v;
+
 .wrappr {
 	height: 100vh;
 	display: flex;
@@ -12,7 +14,7 @@
 	margin: 1em 0;
 }
 
-@media screen and (max-width: 1365px) {
+@media screen and (max-width: v.$media-wide) {
 	.container {
 		flex: 1;
 		width: 100%;
@@ -52,6 +54,7 @@
 	&__theme-switch {
 		grid-area: theme;
 		padding: 0.5em 1em;
+		border-right: var(--border);
 		background-color: var(--color-items-bg);
 		& > * {
 			margin: auto;
@@ -88,5 +91,27 @@
 	}
 	&.theme-bg::after {
 		left: 22em;
+	}
+}
+
+@media screen and (max-width: v.$media-mobile) {
+	.chat {
+		overflow: initial;
+		grid-template-columns: 100vw 100vw;
+		&.theme-bg::after {
+			left: 0;
+		}
+		&.chat_active &__menu {
+			transform: translateX(-100vw);
+		}
+		&__menu {
+			position: relative;
+			transition: transform ease-in-out 200ms;
+			z-index: 100;
+		}
+		&__content {
+			position: relative;
+			left: -100vw;
+		}
 	}
 }

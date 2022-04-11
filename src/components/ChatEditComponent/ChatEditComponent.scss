@@ -1,13 +1,16 @@
+@use '../../styles/variables' as v;
+
 .chat-edit {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
 	padding: 1em;
+	height: 100%;
 	width: 360px;
 	&__section {
 		overflow: hidden;
 		border-radius: var(--border-radius);
 		border:var(--border)
-	}
-	&__section + &__section {
-		margin-top: 1em;
 	}
 	&__button {
 		display: flex;
@@ -34,5 +37,11 @@
 	}
 	&__button + &__button {
 		border-top: var(--border);
+	}
+}
+
+@media screen and (max-width: v.$media-mobile) {
+	.chat-edit {
+		width: initial;
 	}
 }

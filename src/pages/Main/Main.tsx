@@ -7,21 +7,21 @@ import {UserInfoComponent} from '../../components/UserInfoComponent';
 import {InputComponent} from '../../components/InputComponent';
 import {SendPanelComponent} from '../../components/SendPanelComponent';
 import {MessageListComponent} from '../../components/MessageListComponent';
+import {ThemeSwitchComponent} from '../../components/ThemeSwitchComponent';
 import type {MainProps} from './Main.types';
 
 import './Main.scss';
-import {ThemeSwitchComponent} from '../../components/ThemeSwitchComponent';
 
 export const Main: FC<MainProps> = () => {
 	const dispatch = useAppDispatch();
 	const chatId = useAppSelector(({chats}) => chats.active);
 	return (
 		<div className="wrappr">
-			<main className="chat container theme-bg">
-				<section className="chat__user">
+			<main className={`chat container theme-bg ${chatId ? 'chat_active' : ''}`}>
+				<section className="chat__user chat__menu">
 					<UserInfoComponent />
 				</section>
-				<section className="chat__list">
+				<section className="chat__list chat__menu">
 					<header className="chat__list-header">
 						<InputComponent
 							placeholder="Введите название нового чата"
@@ -36,24 +36,24 @@ export const Main: FC<MainProps> = () => {
 						<ChatListComponent />
 					</div>
 				</section>
-				<section className="chat__theme-switch">
+				<section className="chat__theme-switch chat__menu">
 					<ThemeSwitchComponent />
 				</section>
 
 				{chatId ? (
 					<>
-						<section className="chat__info">
+						<section className="chat__info chat__content">
 							<ChatInfoComponent />
 						</section>
-						<section className={`chat__messages`}>
+						<section className="chat__messages chat__content">
 							<MessageListComponent />
 						</section>
-						<section className={`chat__send`}>
+						<section className="chat__send chat__content">
 							<SendPanelComponent />
 						</section>
 					</>
 				) : (
-					<section className="chat__void">
+					<section className="chat__void chat__content">
 						<h1>Информация</h1>
 						Это незаконченное демонстрационное приложение. <em>Использовать только для ознакомления</em>
 						<h2>Ограничения</h2>

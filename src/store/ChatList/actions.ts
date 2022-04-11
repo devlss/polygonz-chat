@@ -49,7 +49,7 @@ export function updateChatLastMessageAction(chatId: number, lastMessage: IApiCha
 	};
 }
 
-export function setActiveChatAction(payload: number): SetActiveChatAction {
+export function setActiveChatAction(payload?: number): SetActiveChatAction {
 	return {
 		type: CHAT_LIST_ACTION_TYPES.SET_ACTIVE,
 		payload

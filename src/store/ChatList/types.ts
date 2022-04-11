@@ -48,7 +48,7 @@ export interface UpdateChatLastMessageAction {
 
 export interface SetActiveChatAction {
 	type: CHAT_LIST_ACTION_TYPES.SET_ACTIVE;
-	payload: number;
+	payload?: number;
 }
 
 export interface GetAllChatsRequest {
