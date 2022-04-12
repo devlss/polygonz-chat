@@ -2,7 +2,7 @@ export function transformTime(timeString: string) {
 	return new Date(timeString).toLocaleTimeString('en-US');
 }
 
-const sanitizeRegexp = /[\w\s_!?@#$%|'"/\\.,*+-]/g;
+const sanitizeRegexp = /[\w\sА-Яа-я_!?@#$%|'"/\\.,*+-]/g;
 const firstLetterRegexp = /\b[A-Z]/g;
 const factor = 2.7;
 const offset = 64;

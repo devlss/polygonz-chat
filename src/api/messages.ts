@@ -131,7 +131,7 @@ const messageHandler = (data: unknown, chatId: number): MApiResponses | undefine
 			}
 			case MESSAGE_TYPE_RS.MESSAGE: {
 				const message = data as IMApiMessageResponse;
-				return {...message, user_id: message.userId!}; // HACK Внезапное изменение сервера
+				return {...message, user_id: message.user_id || message.userId!}; // HACK Внезапное изменение сервера
 			}
 			case MESSAGE_TYPE_RS.USER_CONNECTED: {
 				return data as IMapiUserConnectResponse;
