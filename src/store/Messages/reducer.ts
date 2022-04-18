@@ -45,16 +45,15 @@ export const messagesReducer = (state = initialState, action: MessagesActions): 
 			return state;
 		}
 		case MESSAGES_ACTION_TYPES.RESET: {
-			const newState = {...state};
 			if (action.payload) {
+				const newState = {...state};
 				delete newState.map[action.payload.chatId];
 				delete newState.tokensMap[action.payload.chatId];
+				newState.activeOffset = 0;
+				return newState;
 			} else {
-				newState.map = {};
-				newState.tokensMap = {};
+				return initialState;
 			}
-			newState.activeOffset = 0;
-			return newState;
 		}
 		default:
 			return state;

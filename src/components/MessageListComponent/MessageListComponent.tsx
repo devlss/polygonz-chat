@@ -1,12 +1,12 @@
 import {FC, useEffect, useRef} from 'react';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {MESSAGE_TYPE_RS} from '../../api/messages.types';
 import {MessageConnectComponent, MessageFromComponent, MessageToComponent} from './MessageComponents';
+import {throttle} from '../../helpers';
+import {getOldMessasgesRequest} from '../../store/Messages/actions';
+import {MESSAGE_TYPE_RS} from '../../api/messages.types';
 import type {MessageListComponentProps} from './MessageListComponent.types';
 
 import './MessageListComponent.scss';
-import {throttle} from '../../helpers';
-import {getOldMessasgesRequest} from '../../store/Messages/actions';
 
 export const MessageListComponent: FC<MessageListComponentProps> = () => {
 	const messagesListRef = useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ export const MessageListComponent: FC<MessageListComponentProps> = () => {
 
 	useEffect(() => {
 		if (stickyScrollRef.current) {
-			messagesEndRef.current?.scrollIntoView(); // TODO разобраться со {behavior: 'smooth'}
+			messagesEndRef.current?.scrollIntoView(); // TODO разобраться с {behavior: 'smooth'}
 		}
 	}, [messages]);
 

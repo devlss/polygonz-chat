@@ -34,7 +34,7 @@ export function setTokenAction(chatId: number, token: IApiChatsMessagesTokenResp
 	};
 }
 
-export function messagesResetAction(chatId?: number): MessagesResetAction {
+export function resetMessagesAction(chatId?: number): MessagesResetAction {
 	return chatId
 		? {
 				type: MESSAGES_ACTION_TYPES.RESET,
@@ -66,7 +66,7 @@ export function disconnectRequest(payload: number): DisconnectRequest {
 	};
 }
 
-export function sendMessasgeRequest(content: string): SendMessageRequest {
+export function sendMessageRequest(content: string): SendMessageRequest {
 	return {
 		type: MESSAGES_ACTION_TYPES.R_SEND,
 		payload: {

@@ -4,7 +4,7 @@ import {UserRequests, USER_ACTION_TYPES} from './types';
 import type {AppMiddleware} from '../types';
 import {disconnect} from '../../api/messages';
 import {removeAllChatsAction} from '../ChatList/actions';
-import {messagesResetAction} from '../Messages/actions';
+import {resetMessagesAction} from '../Messages/actions';
 
 // TODO реализовать сценарии регистрации авторизации и выхода из приложения
 export const UserMiddleware: AppMiddleware =
@@ -53,7 +53,7 @@ export const UserMiddleware: AppMiddleware =
 					await signOut();
 					dispatch(setUserAction(null));
 					dispatch(removeAllChatsAction());
-					dispatch(messagesResetAction());
+					dispatch(resetMessagesAction());
 				} catch (error) {
 					console.error('Ошибка при выходе из системы', error);
 				}

@@ -1,10 +1,10 @@
 import {FC} from 'react';
+import {InputComponent} from '../InputComponent';
+import {useAppDispatch} from '../../store/hooks';
+import {sendMessageRequest} from '../../store/Messages/actions';
 import type {SendPanelComponentProps} from './SendPanelComponent.types';
 
 import './SendPanelComponent.scss';
-import {InputComponent} from '../InputComponent';
-import {useAppDispatch} from '../../store/hooks';
-import {sendMessasgeRequest} from '../../store/Messages/actions';
 
 export const SendPanelComponent: FC<SendPanelComponentProps> = () => {
 	const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ export const SendPanelComponent: FC<SendPanelComponentProps> = () => {
 				placeholder="Введите сообщение"
 				onSubmit={(message) => {
 					if (message) {
-						dispatch(sendMessasgeRequest(message));
+						dispatch(sendMessageRequest(message));
 					}
 				}}
 			/>

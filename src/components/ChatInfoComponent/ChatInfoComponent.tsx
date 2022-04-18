@@ -13,12 +13,12 @@ import './ChatInfoComponent.scss';
 export const ChatInfoComponent: FC<ChatInfoComponentProps> = ({className}) => {
 	const chat = useAppSelector(({chats}) => chats.list.find((chat) => chat.id === chats.active), shallowEqual);
 
-	const [isModal, setIsMoldal] = useState(false);
+	const [isModal, setIsModal] = useState(false);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		if (!chat) {
-			setIsMoldal(false);
+			setIsModal(false);
 		}
 	}, [chat]);
 
@@ -27,7 +27,7 @@ export const ChatInfoComponent: FC<ChatInfoComponentProps> = ({className}) => {
 	}, [dispatch]);
 
 	const modalHandler = useCallback(() => {
-		setIsMoldal((current) => !current);
+		setIsModal((current) => !current);
 	}, []);
 
 	return (
