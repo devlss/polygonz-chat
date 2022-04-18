@@ -25,17 +25,12 @@
 	}
 	&__count {
 		display: inline-block;
-		line-height: 1em;
-		&-text {
-			display: inline-block;
-			min-width: 1em;
-			line-height: 1em;
-			padding: 2px;
-			border-radius: 1em;
-			font-size: 0.8em;
-			text-align: center;
-			color: var(--color-text-lite);
-			background-color: var(--color-danger);
-		}
+		min-width: 2em;
+		padding: 0.4em;
+		border-radius: 1em;
+		font-size: 0.8em;
+		text-align: center;
+		color: var(--color-text-lite);
+		background-color: var(--color-danger);
 	}
 }
