@@ -37,6 +37,7 @@
 	}
 	&__content {
 		grid-area: content;
+		overflow: hidden;
 	}
 	&__user {
 		border-right: var(--border);
@@ -86,7 +87,6 @@
 	}
 	&__send {
 		padding: 0.5em 1em;
-		overflow: hidden;
 		border-top: var(--border);
 		background-color: var(--color-items-bg);
 		z-index: 10;
