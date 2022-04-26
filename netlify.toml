@@ -7,3 +7,7 @@
 
 [build]
   publish = "build"
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
